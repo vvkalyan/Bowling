@@ -62,12 +62,12 @@ namespace BowlingGame
           if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwaggerDocumentation();
             }
             else
             {
                 app.UseHsts();
             }
+            app.UseSwaggerDocumentation();
             app.UseHttpsRedirection();
             app.UseAuthentication(); 
             app.UseMvc();

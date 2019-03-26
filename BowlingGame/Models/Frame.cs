@@ -61,6 +61,12 @@ namespace BowlingGame
         
         public int Score()
         {
+            int score = throws.Sum();
+            if (score < 0 || score >30)
+            {
+                throw new Exception("Hmmm something is not working right!!"); 
+            }
+            
             return throws.Sum(); 
         }
         public int ThrowsPerFrame()

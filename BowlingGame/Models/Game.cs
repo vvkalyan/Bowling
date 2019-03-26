@@ -41,16 +41,32 @@ namespace BowlingGame
 
         public void Start()
         {
-            
+            List<int> scores = ScoreString.Split(',').Select(s => int.Parse(s)).ToList();
+            frame = AddFrames();
+            for (int i = 0; i < scores.Count; i++)
+            {
+                Roll(scores[i]);
+            }
         }
         public void Roll(int pins)
         {
-            //results.Add(pins);
+            frame.Load(pins);
+            //special rule for last frame
+            if (frame.Number == maxFrameCount && (frame.IsStrike() || frame.IsSpare()))
+                frame.IncreaseThrowCount();
+            if (frame.IsStrike() || frame.ThrowCount() == frame.ThrowsPerFrame())
+            {
+                frame = AddFrames();
+            }
         }
         public int ScoreByFrame(int frameNo)
         {
+            var frame = frames.Where(f => f.Number == frameNo).FirstOrDefault();
+            if (frame == null)
+            {
+                throw new Exception("Invalid frame!!");
+            }
             return frames.Where(f => f.Number == frameNo).FirstOrDefault().TotalScore;
-
         }
         public int TotalScore
         {
@@ -70,6 +86,10 @@ namespace BowlingGame
                     }
                     currentScore += frame.TotalScore;
                     frame.TotalScore = currentScore;
+                    if (currentScore > 300 || currentScore < 0)
+                    {
+                        throw new Exception("Hmmm something is not working right!!");
+                    }
                 }
                 return currentScore;
             }
@@ -93,25 +113,7 @@ namespace BowlingGame
         {
             return frames.Skip(frame.Number).Take(1).FirstOrDefault();   
         }
-        
-        public void LoadFrames()
-        {
-            List<int> scores = ScoreString.Split(',').Select(s => int.Parse(s)).ToList();
-            frame  = AddFrames(); 
-            for (int i = 0; i < scores.Count; i++)
-            {
-                int noOfPins = scores[i];
-                frame.Load(noOfPins);
-                //special rule for last frame
-                if (frame.Number == maxFrameCount && (frame.IsStrike() || frame.IsSpare()))
-                    frame.IncreaseThrowCount(); 
-                if (frame.IsStrike() || frame.ThrowCount() == frame.ThrowsPerFrame())
-                {
-                    frame = AddFrames();
-                }
-            }
-        }
-
+      
         private IFrame AddFrames()
         {
             if (currentFramecounter <= maxFrameCount)

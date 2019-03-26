@@ -26,7 +26,7 @@ namespace BowlingGame.Services
         }
         public int TotalScore()
         {
-            game.LoadFrames();
+            game.Start();
             return game.TotalScore;
 
         }

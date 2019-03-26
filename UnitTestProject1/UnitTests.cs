@@ -16,7 +16,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(0, game.TotalScore);
         }
         [TestMethod]
@@ -24,7 +24,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1" ;
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(20, game.TotalScore);
         }
         [TestMethod]
@@ -32,7 +32,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "5, 5, 10, 10, 5, 5, 10, 5, 3";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(111, game.TotalScore);
         }
         [TestMethod]
@@ -40,7 +40,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(133, game.TotalScore);
         }
         [TestMethod]
@@ -48,7 +48,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(300, game.TotalScore);
         }
         [TestMethod]
@@ -56,7 +56,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(150, game.TotalScore);
         }
 
@@ -65,7 +65,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "4, 6, 6, 2, 4, 2, 8, 1, 10, 10, 7, 2, 9, 0, 0, 5, 6, 4, 7";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(125, game.TotalScore);
         }
         [TestMethod]
@@ -73,7 +73,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "4, 6, 6, 2, 4, 2, 8, 1, 10, 6, 2, 7, 2, 9, 0, 0, 5, 6, 3";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(97, game.TotalScore);
         }
         [TestMethod]
@@ -81,7 +81,7 @@ namespace GameTests
         {
             game = new Game(new Frame());
             game.ScoreString = "4, 6, 6, 2, 4, 2, 8, 1, 10, 10, 7, 2, 9, 0, 0, 5, 6, 3";
-            game.LoadFrames();
+            game.Start();
             Assert.AreEqual(117, game.TotalScore);
         }
 
